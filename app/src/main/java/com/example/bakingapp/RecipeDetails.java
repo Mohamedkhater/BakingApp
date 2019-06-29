@@ -16,7 +16,7 @@ public class RecipeDetails extends AppCompatActivity {
         RecipeCard recipeCard=intent.getParcelableExtra(RECIPE_TEXT);
 
        // Log.i(RecipeDetails.class.getSimpleName(),recipeCard.getRecipeSteps().toString());
-        setTitle(recipeCard.getRecipeName());
+            setTitle(recipeCard.getRecipeName());
 
     }
 }
