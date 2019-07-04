@@ -2,6 +2,7 @@ package com.example.bakingapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,12 +22,18 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetroHelper {
     public Context mcontext;
-    private ArrayList<RecipeCard> mrecipes;
+
+    public static RecipeCard getFragmentCard() {
+        return fragmentCard;
+    }
+
+    private static RecipeCard fragmentCard;
+    private static ArrayList<RecipeCard> mrecipes;
     GridView gridView;
     public static final String RECIPE_TEXT="recipe-name";
 
 
-    public ArrayList<RecipeCard> getMrecipes() {
+    public static ArrayList<RecipeCard> getMrecipes() {
         return mrecipes;
     }
 
@@ -56,12 +63,11 @@ public class RetroHelper {
                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                Intent intent= new Intent(mcontext,RecipeDetails.class);
                                intent.putExtra(RECIPE_TEXT, mrecipes.get(position));
+                                fragmentCard=mrecipes.get(position);
+
                                gridView.getContext().startActivity(intent);
                            }
                        });
-
-
-
 
                     }
                     else{
@@ -90,13 +96,14 @@ public class RetroHelper {
                 JSONArray ingredientsJson=obj.getJSONArray("ingredients");
 
               //  card.setRecipeIngredients(ingredientsJson);
-                ArrayList<ArrayList<String>> ingredients=new ArrayList<ArrayList<String>>();
+               // ArrayList<ArrayList<String>> ingredients=new ArrayList<ArrayList<String>>();
+                ArrayList<RecipeCard.RecipeIngredients> ingredients=new ArrayList<>();
                 for (int j=0;j<ingredientsJson.length();j++){
                     JSONObject ingredientObject=ingredientsJson.getJSONObject(j);
                     final String quantity=ingredientObject.getString("quantity");
                     final String measure=ingredientObject.getString("measure");
                     final String mainIngredient=ingredientObject.getString("ingredient");
-                    ingredients.add(new ArrayList<String>(){{add(quantity);add(measure);add(mainIngredient);}});
+                    ingredients.add(new RecipeCard.RecipeIngredients(quantity, measure,mainIngredient));
 
 
                 }
