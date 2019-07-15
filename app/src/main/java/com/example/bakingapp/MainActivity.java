@@ -1,10 +1,10 @@
 package com.example.bakingapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+
 
 public class MainActivity extends AppCompatActivity {
     GridView mGridview;
@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         mGridview=findViewById(R.id.grid_view_main);
         RetroHelper helper= new RetroHelper(this,mGridview);
         helper.getResponce();
+
 
     }
 }

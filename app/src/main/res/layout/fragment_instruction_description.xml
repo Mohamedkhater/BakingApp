@@ -2,5 +2,7 @@
 
 <TextView android:layout_width="match_parent"
     android:id="@+id/description_text_view"
+    android:textSize="23sp"
+    android:textColor="@android:color/background_dark"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" />
