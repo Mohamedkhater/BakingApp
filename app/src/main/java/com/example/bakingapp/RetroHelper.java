@@ -2,11 +2,12 @@ package com.example.bakingapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,13 +24,13 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class RetroHelper {
     public Context mcontext;
 
-    public static RecipeCard getFragmentCard() {
+  /*  public static RecipeCard getFragmentCard() {
         return fragmentCard;
-    }
+    }*/
 
     private static RecipeCard fragmentCard;
     private static ArrayList<RecipeCard> mrecipes;
-    GridView gridView;
+    RecyclerView recyclerView;
     public static final String RECIPE_TEXT="recipe-name";
 
 
@@ -37,9 +38,9 @@ public class RetroHelper {
         return mrecipes;
     }
 
-    public RetroHelper(Context context,GridView gridView){
+    public RetroHelper(Context context, RecyclerView recyclerView){
         this.mcontext=context;
-        this.gridView=gridView;
+        this.recyclerView = recyclerView;
     }
     public  void getResponce(){
 
@@ -56,18 +57,24 @@ public class RetroHelper {
                     if(response.body()!=null){
                         String jsonResponce=response.body().toString();
                        mrecipes = formatResponse(jsonResponce);
-                       MainGridViewAdapter mainGridViewAdapter= new MainGridViewAdapter(mcontext, mrecipes);
-                       gridView.setAdapter(mainGridViewAdapter);
-                       gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                       RecipeListAdapter mainGridViewAdapter= new RecipeListAdapter(mcontext, mrecipes);
+                       recyclerView.setAdapter(mainGridViewAdapter);
+                       recyclerView.setLayoutManager(new LinearLayoutManager(mcontext));
+                       /*recyclerView.setOnClickListener(new View.OnClickListener() {
+                           @Override
+                           public void onClick(View v) {
+
+                           }
+                       });*//*(new AdapterView.OnItemClickListener() {
                            @Override
                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                Intent intent= new Intent(mcontext,RecipeDetails.class);
                                intent.putExtra(RECIPE_TEXT, mrecipes.get(position));
                                 fragmentCard=mrecipes.get(position);
 
-                               gridView.getContext().startActivity(intent);
+                               recyclerView.getContext().startActivity(intent);
                            }
-                       });
+                       });*/
 
                     }
                     else{

@@ -40,11 +40,11 @@ public class MasterListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_master_list,container,false);
          gridView=view.findViewById(R.id.master_list_grid_view);
-        Log.d(MasterListFragment.class.getSimpleName(),RetroHelper.getFragmentCard().getId());
+        Log.d(MasterListFragment.class.getSimpleName(),RecipeListAdapter.fragmentCard.getId());
 
 
         MasterListAdapter masterListGridviewAdapter= new MasterListAdapter(getContext(),
-                    RetroHelper.getFragmentCard().getRecipeIngredients(),RetroHelper.getFragmentCard().getRecipeSteps());
+                    RecipeListAdapter.fragmentCard.getRecipeIngredients(),RecipeListAdapter.fragmentCard.getRecipeSteps());
 
 
             gridView.setAdapter(masterListGridviewAdapter);

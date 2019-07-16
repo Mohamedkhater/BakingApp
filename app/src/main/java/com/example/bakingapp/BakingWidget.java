@@ -19,7 +19,7 @@ public class BakingWidget extends AppWidgetProvider {
 
         try{
 
-            widgetText =RetroHelper.getFragmentCard().getRecipeName();
+            widgetText =RecipeListAdapter.fragmentCard.getRecipeName();
             // Construct the RemoteViews object
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_widget);
             views.setTextViewText(R.id.appwidget_text, widgetText);

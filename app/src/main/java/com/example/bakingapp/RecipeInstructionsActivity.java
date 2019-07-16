@@ -23,10 +23,10 @@ public class RecipeInstructionsActivity extends AppCompatActivity {
         {
             FragmentManager fragmentManager=getSupportFragmentManager();
             DescriptionFragment fragment= new DescriptionFragment();
-            fragment.setDescription(RetroHelper.getFragmentCard().getRecipeSteps().get(position).getDescription());
-            if (RetroHelper.getFragmentCard().getRecipeSteps().get(position).getVideoUrl()!=""){
+            fragment.setDescription(RecipeListAdapter.fragmentCard.getRecipeSteps().get(position).getDescription());
+            if (RecipeListAdapter.fragmentCard.getRecipeSteps().get(position).getVideoUrl()!=""){
                 Bundle bundle= new Bundle();
-                bundle.putString("video-url",RetroHelper.getFragmentCard().getRecipeSteps().get(position).getVideoUrl());
+                bundle.putString("video-url",RecipeListAdapter.fragmentCard.getRecipeSteps().get(position).getVideoUrl());
                 Fragment videoFragment= new VideoFragment();
                 videoFragment.setArguments(bundle);
                 fragmentManager.beginTransaction().replace(R.id.video_container,videoFragment).commit();
