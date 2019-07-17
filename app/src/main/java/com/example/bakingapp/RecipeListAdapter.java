@@ -41,10 +41,15 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     public void onBindViewHolder(@NonNull RecipeListAdapter.RecipeViewHolder holder, int position) {
 
         String thumbUrl=mrecipes.get(position).getImagePath();
+        Picasso.with(mcontext).load(thumbUrl).error(mcontext.getDrawable(R.drawable.ic_baking)).into(holder.recipeThumbnail);
 
-            Picasso.with(mcontext).load(thumbUrl).error(mcontext.getDrawable(R.drawable.ic_baking)).into(holder.recipeThumbnail);
+        if (thumbUrl==null)
+            holder.recipeThumbnail.setImageResource(R.drawable.photo);
+
+
         holder.recipeName.setText(mrecipes.get(position).getRecipeName());
 
+           //holder.recipeThumbnail.setImageResource(R.drawable.ic_baking);
 
     }
 

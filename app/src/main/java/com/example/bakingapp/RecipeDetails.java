@@ -27,6 +27,7 @@ public class RecipeDetails extends AppCompatActivity implements MasterListFragme
                 VideoFragment videoFragment=new VideoFragment();
                 fragment.setDescription(RecipeListAdapter.fragmentCard.getRecipeSteps().get(0).getDescription());
                 videoFragment.setVideoUrl(RecipeListAdapter.fragmentCard.getRecipeSteps().get(0).getVideoUrl());
+                videoFragment.setImagePath(RecipeListAdapter.fragmentCard.getRecipeSteps().get(0).getThumbnailUrl());
 
 
                 ft.beginTransaction().add(R.id.description_text_container,fragment).commit();
@@ -56,6 +57,9 @@ public class RecipeDetails extends AppCompatActivity implements MasterListFragme
             fragment.setDescription(RecipeListAdapter.fragmentCard.getRecipeSteps().get(id).getDescription());
             VideoFragment videoFragment=new VideoFragment();
             videoFragment.setVideoUrl(RecipeListAdapter.fragmentCard.getRecipeSteps().get(id).getVideoUrl());
+            String imagePath=RecipeListAdapter.fragmentCard.getRecipeSteps().get(id).getThumbnailUrl();
+            if (imagePath!=null)
+                videoFragment.setImagePath(imagePath);
 
             mg.beginTransaction().replace(R.id.description_text_container,fragment).commit();
             mg.beginTransaction().replace(R.id.video_container,videoFragment).commit();

@@ -12,6 +12,7 @@
 
     <TextView
         android:textSize="25sp"
+        android:gravity="center"
         android:textColor="@android:color/background_dark"
 
         android:id="@+id/recipe_name"

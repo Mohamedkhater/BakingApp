@@ -6,4 +6,7 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+    <string name="image_that_describe_a_certain_recipe_step">image taht descripe a certain recipe step</string>
 </resources>

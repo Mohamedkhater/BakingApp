@@ -41,11 +41,7 @@ public class BakingWidget extends AppWidgetProvider {
 
         }
 
-      /* Intent intent = new Intent(context,RecipeDetails.class);
-        PendingIntent pendingIntent=PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        views.setOnClickPendingIntent(appWidgetId,pendingIntent);*/
 
-        // Instruct the widget manager to update the widget
 
     }
 
