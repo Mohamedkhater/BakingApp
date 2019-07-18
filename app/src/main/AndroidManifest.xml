@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bakingapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-
-
         android:allowBackup="true"
         android:icon="@drawable/ic_baking"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver android:name=".BakingWidget">
+        <receiver android:name=".NewAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/baking_widget_info" />
+                android:resource="@xml/new_app_widget_info" />
         </receiver>
 
         <activity android:name=".MainActivity">
@@ -30,9 +27,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeDetails"
-            android:launchMode="singleTop"/>
+
+      <!--  <receiver android:name=".BakingWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.Provider"
+                android:resource="@xml/baking_widget_info" />
+        </receiver>-->
+
+        <activity
+            android:name=".RecipeDetails"
+            android:launchMode="singleTop" />
         <activity android:name=".RecipeInstructionsActivity" />
+        <activity android:name=".IngredientsActivity" />
+
+        <service
+            android:name=".BakingWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

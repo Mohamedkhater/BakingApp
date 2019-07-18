@@ -6,12 +6,13 @@
 
 
     >
+
     <fragment
 
-        android:layout_width="match_parent"
+        android:id="@+id/master_list_fragment"
         android:name="com.example.bakingapp.MasterListFragment"
-        android:layout_height="match_parent"
-        android:id="@+id/master_list_fragment"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

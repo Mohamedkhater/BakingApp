@@ -2,6 +2,8 @@ package com.example.bakingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +38,24 @@ public class RecipeDetails extends AppCompatActivity implements MasterListFragme
 
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.ingredients,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.ingredints)
+        {
+           ArrayList<RecipeCard.RecipeIngredients> ingredients= RecipeListAdapter.fragmentCard.getRecipeIngredients();
+           Intent intent = new Intent(this,IngredientsActivity.class);
+           intent.putParcelableArrayListExtra("ingredients",ingredients);
+           startActivity(intent);
+        }
+        return true;
     }
 
     @Override
