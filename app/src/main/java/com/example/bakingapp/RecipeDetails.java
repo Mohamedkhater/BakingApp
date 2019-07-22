@@ -1,6 +1,8 @@
 package com.example.bakingapp;
 
+import android.appwidget.AppWidgetManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,15 +13,37 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
+
+import javax.microedition.khronos.egl.EGLDisplay;
+
 public class RecipeDetails extends AppCompatActivity implements MasterListFragment.getrecipeIdFromBundle{
     ArrayList<RecipeCard.RecipeIngredients> ingredients;
     ArrayList<RecipeCard.RecipeStep> stps;
+    private int appwidgetId;
+    public static final String WIDGET_ID_PREF="widget-id";
+    public static final String WIDGET_ID="widgetid";
     public boolean twoPaneMode=false;
+    SharedPreferences preferences;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.putString(WIDGET_ID,RecipeListAdapter.fragmentCard.getId());
+        editor.apply();
+        NewAppWidget.updateWidget(this);
+
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState ) {
+         preferences=getSharedPreferences(WIDGET_ID_PREF,MODE_PRIVATE);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_detail);
         setTitle(RecipeListAdapter.fragmentCard.getRecipeName());
+
 
         if (findViewById(R.id.tablet_linear_layout)!=null){
             twoPaneMode=true;

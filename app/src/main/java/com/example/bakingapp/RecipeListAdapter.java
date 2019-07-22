@@ -2,6 +2,7 @@ package com.example.bakingapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     public static final String RECIPE_TEXT="recipe-name";
     public static RecipeCard fragmentCard;
 
-    ArrayList<RecipeCard>mrecipes;
+    public  ArrayList<RecipeCard>mrecipes;
     public RecipeListAdapter(Context context, ArrayList<RecipeCard>recipes){
         this.mcontext=context;
         this.mrecipes=recipes;
@@ -78,6 +79,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
                     intent.putExtra(RECIPE_TEXT, mrecipes.get(position));
                     fragmentCard=mrecipes.get(position);
+                    //SharedPreferences p=mcontext.getSharedPreferences()
                     v.getContext().startActivity(intent);
                 }
             });
